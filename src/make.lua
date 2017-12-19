@@ -2,10 +2,10 @@
 -- submodule which holds the functions that make vanilla lua tables.
 
 make = {}
-local __root = "make."
+local _root = "make."
 
 -- regular table (used for lam.new)
-make["table"]						= require(__root..'_lamt')
+make["table"]						= require(_root..'_lamt')
 	make.vanilla						= make.table
 	make.luatable						= make.luatable
 

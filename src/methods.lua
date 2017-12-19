@@ -3,18 +3,23 @@
 
 methods = {}
 
--- set `__index` for 
---methods.__index = methods
+local _root = "methods."
 
 
-local __root = "methods."
-
--- general
---methods.iterate 	= require(__root..'iterate')
---methods.sample 		= require(__root..'sample')
 
 -- `do` submodule
-methods.do = require(__root..'_do')
+--methods.do    = require(_root..'_do')
+-- `class` submodule
+methods.class = require(_root..'_class')
+
+
+
+-- general
+--methods.iterate 	= require(_root..'iterate')
+--methods.sample 		= require(_root..'sample')
+
+
+
 
 
 return methods
