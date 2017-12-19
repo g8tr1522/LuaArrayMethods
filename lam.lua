@@ -50,6 +50,9 @@ setmetatable(lam.new, {__index =
 	function (t,k)
 		local o = {}
 		o = lam.make[k]
+		
+		--I want to call as lam.new.range
+		-- which creates a lam table from the range function
 	
 	
 	
