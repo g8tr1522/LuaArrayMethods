@@ -14,6 +14,10 @@ local _root = "src/methods/"
 local function insert_methods_from_submodule (submodule)
 	for k,v in pairs(submodule) do
 		methods[k] = v
+		methods[k..'_'] = function (self, ...)
+			self:settable(self:add(...))
+			return self
+		end
 	end
 end
 

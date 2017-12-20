@@ -7,7 +7,7 @@ _root = "src/methods/manip/"
 
 
 manip.add      = require(_root..'add')
-manip.add_     = require(_root..'add_')
+--manip.add_     = require(_root..'add_')
 --manip.mult     = require(_root..'mult')
 --manip.mult_    = require(_root..'mult_')
 
