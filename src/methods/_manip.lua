@@ -32,15 +32,20 @@ manip.reverse  = require(_root..'reverse')
 
 --=============================================================================
 
-local function underscore_methods (manip_here)
-	for k,v in pairs(manip_here) do
-		manip_here[k..'_'] = function (self, ...)
-			self:settable( self[k](self, ...) )
-			return self
-		end
+local init_keys = {}
+local i = 0
+for k,_ in pairs(manip) do
+	i = i+1
+	init_keys[i] = k
+end
+
+
+for i,v in ipairs(init_keys) do
+	manip[v..'_'] = function (self, ...)
+		self:settable( self[v](self, ...) )
+		return self
 	end
 end
 
-underscore_methods(manip)
 
 return manip
