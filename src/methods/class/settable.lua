@@ -1,0 +1,2 @@
+-- self.class.settable(new_table)
+-- set

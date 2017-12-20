@@ -22,10 +22,10 @@ end
 function lam.new (table_or_type, ...)
 	local o = {}
 	if type(table_or_type)=="table" then
-		o = table_or_type or {}
+		o.table   = table_or_type or {}
 		o.lamtype = "table"
 	elseif type(table_or_type)=="string" then
-		o = lam.make[table_or_type](...)
+		o.table   = lam.make[table_or_type](...)
 		o.lamtype = table_or_type
 	end
 	
