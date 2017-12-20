@@ -4,15 +4,11 @@
 
 
 return function (self, err_level)
-	if type(self)=="table" then
-		if self.lamtype then
-			return self.table
-		else
-			return self
-		end
-	else
-		error("Error in lam.class.gettable :"
-			.."\n 	self is not a table"
-			, err_level or 3)
+	local t = {}
+	
+	for i=1,#self.table do
+		t[i] = self.table[i]
 	end
+	
+	return t
 end
