@@ -20,7 +20,12 @@ manip.add      = require(_root..'add')
 manip.mult     = require(_root..'mult')
 
 ---------------------------------------
+-- porting from chance submodule
+manip.shuffle  = require(_root..'shuffle')
+
+---------------------------------------
 -- miscellaneous
+manip.reverse  = require(_root..'reverse')
 
 
 
