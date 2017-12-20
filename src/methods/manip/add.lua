@@ -1,6 +1,5 @@
--- lam.do.math.add(val)
+-- lam.methods.add(val)
 -- add `val` to every element in array
--- preserves array, but returns result
 
 
 return function (self, val)
@@ -11,5 +10,4 @@ return function (self, val)
 	end
 	
 	return t
-end -- add
-	
+end 

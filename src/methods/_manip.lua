@@ -1,16 +1,31 @@
 -- manip submodule which holds all the array manipulators
+-- at the end, we have a function which automatically creates 
+--		the destructive underscore functions
 
 manip = {}
 
-
 _root = "src/methods/manip/"
 
+-- require functions here:
+--=============================================================================
 
+---------------------------------------
+-- substituting vanilla lua functions
+manip.insert   = require(_root..'insert')
+manip.remove   = require(_root..'remove')
+
+---------------------------------------
+-- math
 manip.add      = require(_root..'add')
---manip.add_     = require(_root..'add_')
---manip.mult     = require(_root..'mult')
---manip.mult_    = require(_root..'mult_')
+manip.mult     = require(_root..'mult')
 
+---------------------------------------
+-- miscellaneous
+
+
+
+
+--=============================================================================
 
 local function underscore_methods (manip_here)
 	for k,v in pairs(manip_here) do
