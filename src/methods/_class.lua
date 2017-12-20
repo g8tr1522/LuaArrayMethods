@@ -6,14 +6,14 @@
 
 
 class = {}
-_root = "src/class/"
+_root = "src/methods/class/"
 
 
 --class.copy       = require(_root..'copy')
---class.gettable   = require(_root..'gettable')
+class.gettable   = require(_root..'gettable')
 --class.gettype    = require(_root..'gettype')
 --class.printinfo  = require(_root..'printinfo')
---class.set        = require(_root..'set')
+class.settable   = require(_root..'settable')
 
 
 return class

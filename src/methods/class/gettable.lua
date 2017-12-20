@@ -11,7 +11,7 @@ return function (self, err_level)
 			return self
 		end
 	else
-		error("Error in lam.class.gettable :
+		error("Error in lam.class.gettable :"
 			.."\n 	self is not a table"
 			, err_level or 3)
 	end
