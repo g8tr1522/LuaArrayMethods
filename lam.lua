@@ -3,6 +3,9 @@
 -- module
 lam = {}
 
+-- require chance repo/submodule
+chance = require('chance/chance')
+
 
 -- make method
 lam.make = require('src/make')

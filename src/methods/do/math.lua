@@ -20,11 +20,8 @@ function math.add (self, val)
 end -- add
 
 function math.add_ (self, val)
-	if self.settable then 
-		self:settable(self.math:add(val))
-	else
-		self = lam.math.add(self, val)
-	end
+	self.class:settable(self.math:add(val))
+	return self
 end
 
 
@@ -42,11 +39,8 @@ function math.mult (self, val)
 end -- add
 
 function math.mult_ (self, val)
-	if self.settable then 
-		self:settable(self.math:add(val))
-	else
-		self = lam.math.add(self, val)
-	end
+	self.class:settable(self.math:mult(val))
+	return self
 end
 	
 

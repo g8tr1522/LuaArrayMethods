@@ -3,12 +3,12 @@
 
 methods = {}
 
-local _root = "methods."
+local _root = "src/methods/"
 
 
 
 -- `do` submodule
---methods.do    = require(_root..'_do')
+methods.do    = require(_root..'_do')
 -- `class` submodule
 methods.class = require(_root..'_class')
 
