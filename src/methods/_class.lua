@@ -6,7 +6,7 @@
 
 
 class = {}
-_root = "src/methods/class/"
+_root = _mainroot.."src/methods/class/"
 
 
 class.gettable   = require(_root..'gettable')

@@ -2,7 +2,7 @@
 -- submodule which holds the functions that make vanilla lua tables.
 
 make = {}
-local _root = "src/make/"
+local _root = _mainroot.."src/make/"
 
 -- regular table (used for lam.new)
 make["table"]						= require(_root..'table')

@@ -3,7 +3,7 @@
 --		the destructive underscore functions
 
 manip = {}
-_root = "src/methods/manip/"
+_root = _mainroot.."src/methods/manip/"
 
 
 

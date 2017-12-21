@@ -1,9 +1,9 @@
 -- lam.methods
 -- The module of functions that operate on lam tables.
 
+print("1 class is ",tostring(class))
 methods = {}
-
-local _root = "src/methods/"
+local _root = _mainroot.."src/methods/"
 
 
 -- general
@@ -20,9 +20,11 @@ local function insert_methods_from_submodule (submodule_name)
 end
 
 
+print("2 class is ",tostring(class))
 -- `class` submodule
 insert_methods_from_submodule('_class')
 
+print("3 class is ",tostring(class))
 -- `manip` submodule
 insert_methods_from_submodule('_manip')
 

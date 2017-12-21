@@ -2,20 +2,21 @@
 
 -- module
 lam = {}
+_mainroot = _lamroot or ''	--folder that lam.lua is kept in 
 
 -- require chance repo/submodule
-chance = require('chance/chance')
+chance = require(_mainroot..'chance/chance')
 
 
 -- make methods
 -- used for making vanilla lua tables
-lam.make = require('src/make')
+lam.make = require(_mainroot..'src/make')
 
 
 -- lam class methods
 -- (a lam object accesses these methods)
 --		(see call to setmetatable in lam.new)
-lam.methods = require('src/methods')
+lam.methods = require(_mainroot..'src/methods')
 lam.methods.__index = function (t,k)
 	return lam.methods[k]
 end

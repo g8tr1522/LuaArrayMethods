@@ -1,7 +1,7 @@
 -- submodule which holds any methods that override vanilla metamethods
 
 override = {}
-_root = 'src/methods/override'
+_root = _mainroot..'src/methods/override'
 
 
 override.__len = function (lam_object)
