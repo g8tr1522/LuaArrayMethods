@@ -3,11 +3,12 @@
 --		the destructive underscore functions
 
 manip = {}
-
 _root = "src/methods/manip/"
 
--- require functions here:
+
+
 --=============================================================================
+-- require basic functions here:
 
 ---------------------------------------
 -- substituting vanilla lua functions
@@ -29,8 +30,8 @@ manip.reverse  = require(_root..'reverse')
 
 
 
-
 --=============================================================================
+-- add underscored methods here:
 
 local init_keys = {}
 local i = 0
@@ -46,6 +47,16 @@ for i,v in ipairs(init_keys) do
 		return self
 	end
 end
+
+
+
+--=============================================================================
+-- overridden underscored methods
+-- these methods require special care.
+-- 	ie, they can't use the default underscored method made in the above two loops.
+
+manip.remove_ = require(_root..'remove_')
+
 
 
 return manip

@@ -7,11 +7,14 @@ lam = {}
 chance = require('chance/chance')
 
 
--- make method
+-- make methods
+-- used for making vanilla lua tables
 lam.make = require('src/make')
 
 
 -- lam class methods
+-- (a lam object accesses these methods)
+--		(see call to setmetatable in lam.new)
 lam.methods = require('src/methods')
 lam.methods.__index = function (t,k)
 	return lam.methods[k]
