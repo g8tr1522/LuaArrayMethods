@@ -1,6 +1,9 @@
 
+local loc_unpack = unpack or table.unpack  -- Renoise API does not have table.unpack
 
-return function (self)
+function lam_unpack (self)
 	local t = self:gettable()
-	return table.unpack(t)
+	return loc_unpack(t)
 end
+
+return lam_unpack
