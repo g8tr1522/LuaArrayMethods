@@ -41,5 +41,5 @@ function lam.new (table_or_type, ...)
 end
 
 
-
+_mainroot = nil	-- in case this variable is used in other libraries, etc.
 return lam
