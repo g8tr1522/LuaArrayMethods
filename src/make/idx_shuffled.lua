@@ -10,7 +10,7 @@ idx = require(_mainroot..'src/make/idx')
 
 idx_shuffle = function (last)
 	local t = idx(last)
-	t = Phrases.chance.helpers.shuffle(t)
+	t = lam.methods.shuffle(t)
 	
 	return t
 end
