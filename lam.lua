@@ -13,6 +13,11 @@ chance = require(_mainroot..'chance/chance')
 lam.make = require(_mainroot..'src/make')
 
 
+-- basic methods
+-- used for manipulating ordinary lua tables
+lam.basic = require(_mainroot..'src/methods/_basic')
+
+
 -- lam class methods
 -- (a lam object accesses these methods)
 --		(see call to setmetatable in lam.new)
