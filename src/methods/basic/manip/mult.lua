@@ -3,9 +3,12 @@
 
 
 return function (t, val)
+	local rt = {}
+	val = val or 1
+	
 	for i=1,#t do
-		t[i] = t[i] * val
+		rt[i] = t[i] * val
 	end
 	
-	return t
+	return rt
 end 

@@ -8,6 +8,8 @@ _mainroot = _lamroot or ''	--folder that lam.lua is kept in
 chance = require(_mainroot..'chance/chance')
 
 
+
+
 -- make methods
 -- used for making vanilla lua tables
 lam.make = require(_mainroot..'src/make')
@@ -44,6 +46,7 @@ function lam.new (table_or_type, ...)
 	setmetatable(o, lam.methods)
 	return o
 end
+
 
 
 _mainroot = nil	-- in case this variable is used in other libraries, etc.
