@@ -31,10 +31,10 @@
 --
 --
 -- about return values
---	- remove always returns two values, `re, t`
+--	- remove always returns two values, `re, rt`
 --	- `re` is the table of removed elements.
 --			- `re` won't be a table if `arg` is a string type, or if no arguments are called.
---	- `t` is the new table, after removing the items
+--	- `rt` is the new table, after removing the items
 --
 --
 
@@ -50,20 +50,21 @@ local rand = math.random
 remove = nil
 
 function remove (t, arg, arg2)
+	local rt = lam.copy_vla(t)	-- copy input table into return table
 	local re = {}		-- return elements
 	
 	
 	if (not arg) and (not arg2) then
-		re = vrem(t, rand(#t))
+		re = vrem(rt, rand(#rt))
 	
 	elseif type(arg)=="number" and (not arg2) then
 		local toi = {}	--table of indices for removed elements
 		for i=1,arg do
-			local j = rand(#t)
+			local j = rand(#rt)
 			toi[i] = j + (i-1)	-- this preserves the actual index prior to the function call
-			re [i] = vrem(t,j)
+			re [i] = vrem(rt,j)
 		end
-		return re, t --, toi
+		return re, rt --, toi
 		
 	elseif type(arg)=="table" then
 		-- future: `arg` can be out of order, but we must do the pseudocode:
@@ -75,24 +76,24 @@ function remove (t, arg, arg2)
 			----		skipped += 1
 			---- end
 			---- current_idx = current_idx + skipped
-			re[i] = vrem(t, current_idx)
+			re[i] = vrem(rt, current_idx)
 			---- local prev_idx = current_index
 		end
 	
 	elseif type(arg)=="string" then
 		if arg=='i' or arg=="index" then
-			re = vrem(t, arg2)
+			re = vrem(rt, arg2)
 		elseif arg=='f' or arg=="first" then
-			re = vrem(t, 1)
+			re = vrem(rt, 1)
 		elseif arg=='l' or arg=="last" then
-			re = vrem(t, #t)
+			re = vrem(rt, #rt)
 		elseif arg=='r' or arg=="random" then
-			re = vrem(t, rand(#t))
+			re = vrem(rt, rand(#rt))
 		end
 		
 	elseif type(arg)=="number" and type(arg2)=="number" then
 		for i=1,(arg2-arg+1) do
-			re[i] = vrem(t, arg+(i-1))
+			re[i] = vrem(rt, arg+(i-1))
 		end
 	
 	else
@@ -103,7 +104,7 @@ function remove (t, arg, arg2)
 		
 	end
 	
-	return re, t	
+	return re, rt	
 end
 
 

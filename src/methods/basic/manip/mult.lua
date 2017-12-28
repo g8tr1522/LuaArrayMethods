@@ -3,7 +3,7 @@
 
 
 return function (t, val)
-	local rt = {}
+	local rt = {}  -- return table
 	val = val or 1
 	
 	for i=1,#t do

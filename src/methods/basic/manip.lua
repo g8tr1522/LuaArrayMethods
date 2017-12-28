@@ -11,10 +11,6 @@ _root = _mainroot.."src/methods/basic/manip/"
 -- require basic functions here:
 
 ---------------------------------------
--- copy function
-manip.acopy    = require(_root..'acopy')
-
----------------------------------------
 -- substituting vanilla lua functions
 manip.insert   = require(_root..'insert')
 manip.remove   = require(_root..'remove')

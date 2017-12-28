@@ -1,5 +1,5 @@
 return function (t)
-	local rt = {}
+	local rt = {}		-- return table
 	
 	for i=1,#t do
 		rt[i] = t[#t - (i-1)] 
