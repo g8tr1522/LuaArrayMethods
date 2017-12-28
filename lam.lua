@@ -4,10 +4,12 @@
 lam = {}
 _mainroot = _lamroot or ''	--folder that lam.lua is kept in 
 
+
+-------------------------------------------------------------------------------
+-- requires
+
 -- require chance repo/submodule
 chance = require(_mainroot..'chance/chance')
-
-
 
 
 -- make methods
@@ -30,6 +32,10 @@ end
 
 
 -------------------------------------------------------------------------------
+-- basic methods
+
+
+---------------------------------------
 -- lam.new(table_or_type, make_args)
 -- returns a new lam table
 -- a lam table can use the above class methods
@@ -45,6 +51,18 @@ function lam.new (table_or_type, ...)
 	
 	setmetatable(o, lam.methods)
 	return o
+end
+
+
+---------------------------------------
+-- lam.copy_vla(vanilla_lua_array)
+-- copies the elements of a simple contiguous array
+function lam.copy_vla (vanilla_lua_array)
+	local rt = {}
+	for i=1,#vanilla_lua_array do
+		rt[i] = vanilla_lua_array[i]
+	end
+	return rt
 end
 
 
