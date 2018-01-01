@@ -63,7 +63,6 @@ end
 
 _root = 'src/object_methods/overridden_manip/'
 
-manip.remove  = require(_root..'remove')
 manip.remove_ = require(_root..'remove_')
 
 
