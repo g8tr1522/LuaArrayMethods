@@ -5,6 +5,14 @@ lam = {}
 _mainroot = _lamroot or ''	--folder that lam.lua is kept in 
 
 
+local function insert_methods_from_submodule (receiver_submodule, submodule_name)
+	local subm = require(_mainroot..submodule_name)
+	for k,v in pairs(subm) do
+		receiver_submodule[k] = v
+	end
+	subm = nil
+end
+
 -------------------------------------------------------------------------------
 -- requires
 

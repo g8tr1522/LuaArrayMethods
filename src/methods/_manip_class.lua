@@ -10,40 +10,36 @@ _root = _mainroot.."src/methods/manip/"
 --=============================================================================
 -- require basic functions here:
 
----------------------------------------
--- substituting vanilla lua functions
-manip.insert   = require(_root..'insert')
-manip.remove   = require(_root..'remove')
-
----------------------------------------
--- math
-manip.add      = require(_root..'add')
-manip.mult     = require(_root..'mult')
-
----------------------------------------
--- porting from chance submodule
-manip.shuffle  = require(_root..'shuffle')
-
----------------------------------------
--- miscellaneous
-manip.reverse  = require(_root..'reverse')
-
+--insert_methods_from_submodule(manip, 'src/methods/basic/manip')
+--local basic = require(_mainroot.."src/methods/_basic")
 
 
 --=============================================================================
--- add underscored methods here:
+-- add underscored and lam class methods here:
 
 local init_keys = {}
 local i = 0
-for k,_ in pairs(manip) do
+for k,_ in pairs(lam.basic) do
 	i = i+1
 	init_keys[i] = k
 end
 
+-- non-destructive functions
+for i,v in ipairs(init_keys) do
+	manip[v] = function (self, ...)
+		local t = self:gettable()
+		local basic_func = lam.basic[v]
+		return basic_func(t, ...)
+	end
+end
 
+-- destructive functions (aka, underscored)
 for i,v in ipairs(init_keys) do
 	manip[v..'_'] = function (self, ...)
-		self:settable( self[v](self, ...) )
+		local t = self:gettable()
+		local basic_func = lam.basic[v]
+		local result = basic_func(t, ...)
+		self:settable( result )
 		return self
 	end
 end
@@ -58,5 +54,5 @@ end
 manip.remove_ = require(_root..'remove_')
 
 
-
+basic = nil
 return manip
