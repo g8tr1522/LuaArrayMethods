@@ -1,10 +1,13 @@
 -- require this file to use in other projects
 
--- module
+-------------------------------------------------------------------------------
+-- module and other globals used for loading
 lam = {}
 _mainroot = _lamroot or ''	--folder that lam.lua is kept in 
 
 
+-- This is a global function that other submodules will use to insert methods
+--	from other submodules.
 local function insert_methods_from_submodule (receiver_submodule, submodule_name)
 	local subm = require(_mainroot..submodule_name)
 	for k,v in pairs(subm) do
@@ -12,6 +15,8 @@ local function insert_methods_from_submodule (receiver_submodule, submodule_name
 	end
 	subm = nil
 end
+
+
 
 -------------------------------------------------------------------------------
 -- requires
@@ -33,10 +38,11 @@ lam.basic = require(_mainroot..'src/basic')
 -- lam class methods
 -- (a lam object accesses these methods)
 --		(see call to setmetatable in lam.new)
-lam.methods = require(_mainroot..'src/object_methods')
-lam.methods.__index = function (t,k)
-	return lam.methods[k]
+lam.object_methods = require(_mainroot..'src/object_methods')
+lam.object_methods.__index = function (t,k)
+	return lam.object_methods[k]
 end
+
 
 
 -------------------------------------------------------------------------------
@@ -57,7 +63,7 @@ function lam.new (table_or_type, ...)
 		o.lamtype = table_or_type
 	end
 	
-	setmetatable(o, lam.methods)
+	setmetatable(o, lam.object_methods)
 	return o
 end
 
