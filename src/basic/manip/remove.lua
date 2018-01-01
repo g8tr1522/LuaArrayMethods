@@ -71,7 +71,7 @@ function remove (t, arg, arg2)
 		--		the pseudocode is all commented lines in this `elseif` block, that are beginning with "----"
 		---- local skipped = 0
 		for i=1,#arg do
-			local current_idx = arg[i]+(i-1)
+			local current_idx = arg[i]-(i-1)
 			---- if current_idx < prev_idx then
 			----		skipped += 1
 			---- end

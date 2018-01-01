@@ -19,7 +19,11 @@ print("  ~ t.add_            ", tostring(t.add_))
 print("===================================================")
 
 
+u = lam.make.range(5)
+u = lam.basic.mult(u, 0.4)
 
+v = lam.make.range(5)
+v = lam.basic.mult(v, 5)
 
 
 
