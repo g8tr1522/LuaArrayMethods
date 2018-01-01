@@ -2,7 +2,7 @@
 -- this module has functions which returns single values from an array
 
 selectors = {}
-local _root = _mainroot.."src/methods/selectors/"
+local _root = _mainroot.."src/object_methods/selectors/"
 
 
 --selectors. = require

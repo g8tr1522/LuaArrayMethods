@@ -1,8 +1,8 @@
--- lam.methods
--- The module of functions that operate on lam tables.
+-- lam.obejct_methods
+-- This module contains all methods that lam objects can use. 
 
 methods = {}
-local _root = _mainroot.."src/methods/"
+local _root = _mainroot.."src/object_methods/"
 
 
 -- general

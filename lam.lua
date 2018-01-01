@@ -33,7 +33,7 @@ lam.basic = require(_mainroot..'src/basic')
 -- lam class methods
 -- (a lam object accesses these methods)
 --		(see call to setmetatable in lam.new)
-lam.methods = require(_mainroot..'src/methods')
+lam.methods = require(_mainroot..'src/object_methods')
 lam.methods.__index = function (t,k)
 	return lam.methods[k]
 end

@@ -61,7 +61,7 @@ end
 -- future: get the above loops to handle multiple return args with `...` 
 --		Then, we won't need to have this section.
 
-_root = 'src/methods/overridden_manip/'
+_root = 'src/object_methods/overridden_manip/'
 
 manip.remove  = require(_root..'remove')
 manip.remove_ = require(_root..'remove_')

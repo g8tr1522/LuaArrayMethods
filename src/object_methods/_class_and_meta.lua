@@ -5,7 +5,7 @@
 
 
 lamclass = {}
-_root = _mainroot.."src/methods/class_and_meta/"
+_root = _mainroot.."src/object_methods/class_and_meta/"
 
 
 -------------------------------------------------------------------------------
