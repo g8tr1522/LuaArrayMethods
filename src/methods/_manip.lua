@@ -1,11 +1,15 @@
--- manip submodule which holds all the array manipulators
--- at the end, we have a function which automatically creates 
---		the destructive underscore functions
+-- manip submodule which holds all the array manipulators for lam objects
+--
+-- We use the functions in 'src/basic/basic_manip.lua' to create these functions
+-- The 'manip' (for lam objects) are created automatically
+--		by making them 'wrappers' for the already loaded basic versions.
+-- This is done by using a loop to make the lam class methods (that are just
+--		wrapper functions from each basic function).
+-- Some methods must be overridden because they would not operate as expected 
+--		when made by these loops. These are kept in the folder 'overridden_manip'.
+--
 
 manip = {}
-_root = _mainroot.."src/methods/manip/"
-
-
 
 --=============================================================================
 -- require basic functions here:
@@ -13,6 +17,8 @@ _root = _mainroot.."src/methods/manip/"
 --insert_methods_from_submodule(manip, 'src/methods/basic/manip')
 --local basic = require(_mainroot.."src/methods/_basic")
 local basic_manip = require(_mainroot.."src/basic/basic_manip")
+
+
 
 --=============================================================================
 -- add underscored and lam class methods here:
@@ -55,6 +61,9 @@ end
 -- future: get the above loops to handle multiple return args with `...` 
 --		Then, we won't need to have this section.
 
+_root = 'src/methods/overridden_manip/'
+
+manip.remove  = require(_root..'remove')
 manip.remove_ = require(_root..'remove_')
 
 
