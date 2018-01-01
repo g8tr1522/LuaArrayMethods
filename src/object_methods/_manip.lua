@@ -53,17 +53,28 @@ end
 
 
 --=============================================================================
--- overridden lam class methods
--- These methods require special care.
--- 		ie, they can't use the default underscored method made in the above two loops.
--- Usually, these just have multiple return arguments
+-- handling methods which return multiple arguments
+-- for basic methods that return more than one object, 
+--		special care must be taken to handle those multiple objects
+--		for the destructive/underscored versions of the basic functions.
 --
--- future: get the above loops to handle multiple return args with `...` 
---		Then, we won't need to have this section.
 
-_root = 'src/object_methods/overridden_manip/'
+local overridden_underscored = {
+	"remove",
+}
 
-manip.remove_ = require(_root..'remove_')
+for _,v in ipairs(overridden_underscored) do
+	manip[v..'_'] = function (self, ...)
+		local t = self:gettable()
+		local basic_func = basic_manip[v]
+		local returned_args = { basic_func(t, ...) }
+		local new_table = table.remove(returned_args, 1)
+		self:settable( new_table )
+		return self, table.unpack( returned_args )
+	end
+end
+
+
 
 
 --basic_manip = nil
