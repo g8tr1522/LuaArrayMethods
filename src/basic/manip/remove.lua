@@ -1,11 +1,11 @@
---lam.methods.remove(arg, arg2)
+--lam.basic.remove(t, arg, arg2)
 -- remove items from lam array
 -- doesn't work exactly like table.remove
 -- 
 --
 -- arg type handling:
 --	- type(arg)
---			- descreption
+--			- description
 --	- "nil"
 --			- remove a random element from the array
 --			- `re` won't be a table
@@ -31,10 +31,10 @@
 --
 --
 -- about return values
---	- remove always returns two values, `re, rt`
+--	- remove always returns two values, `rt, re`
+--	- `rt` is the new table, after removing the items.
 --	- `re` is the table of removed elements.
 --			- `re` won't be a table if `arg` is a string type, or if no arguments are called.
---	- `rt` is the new table, after removing the items
 --
 --
 
@@ -104,7 +104,7 @@ function remove (t, arg, arg2)
 		
 	end
 	
-	return re, rt	
+	return rt, re
 end
 
 

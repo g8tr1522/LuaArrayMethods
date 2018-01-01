@@ -1,18 +1,22 @@
 --lam.methods.remove_(arg, arg2)
 -- 
 -- Destructive version of `lam.methods.remove`
--- Works exactly like `lam.methods.remove`, except returns a third value, `oldt`
--- `oldt` is the table prior to the `remove` call
+-- Works exactly like `lam.methods.remove`, except it doesn't return the 
+--		vanilla lua array (ie, `rt`).
 --
 
 
+local basic_remove = require(_mainroot..'src/basic/manip/remove')
+
+
 function remove_ (self, arg, arg2)
-	local oldt = self:gettable() or self
+	local rt = self:gettable()
+	local re = {}
 	
-	local re,t = self:remove(arg, arg2)
-	self:settable(t)
+	rt,re = basic_remove(rt, arg, arg2)
+	self:settable(rt)
 	
-	return re, t, oldt
+	return self,re
 end
 
 
