@@ -23,7 +23,7 @@ end
 insert_methods_from_submodule('_lamclass')
 
 -- `manip` submodule
-insert_methods_from_submodule('_manip_class')
+insert_methods_from_submodule('_manip')
 
 -- `override` submodule
 insert_methods_from_submodule('_override')
