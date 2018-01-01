@@ -27,7 +27,7 @@ lam.make = require(_mainroot..'src/make')
 
 -- basic methods
 -- used for manipulating ordinary lua tables
-lam.basic = require(_mainroot..'src/methods/_basic')
+lam.basic = require(_mainroot..'src/basic')
 
 
 -- lam class methods
