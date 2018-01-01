@@ -20,13 +20,13 @@ end
 
 
 -- `lamclass` submodule
-insert_methods_from_submodule('_lamclass')
+insert_methods_from_submodule('_class_and_meta')
 
 -- `manip` submodule
 insert_methods_from_submodule('_manip')
 
 -- `override` submodule
-insert_methods_from_submodule('_override')
+--insert_methods_from_submodule('_override') -- now in '_class_and_meta' submodule
 
 
 
