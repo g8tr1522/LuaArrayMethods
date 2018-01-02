@@ -45,14 +45,20 @@ end
 -------------------------------------------------------------------------------
 
 local notes2midi = function (t, transpose, octave)
+--handle input args (except t)
 	octave = math.floor(octave) or 0
-	transpose = transpose or 0
-	local ro = {}		--return object
-	
-	if type(transpose)=="string" then
+	if type(transpose)=="number" then
+		transpose = math.floor(transpose)
+	elseif type(transpose)=="string" then
 		transpose = main_algo(transpose, 0,0)
+	else
+		transpose = 0
 	end
 	
+--declare locals
+	local ro = {}		--return object
+	
+--do main algorithm depending on whether t is a string or a table of strings
 	if type(t)=="string" then
 		ro = main_algo(t)	+ transpose + octave*12	
 	elseif type(t)=="table" then
