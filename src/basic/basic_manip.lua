@@ -26,6 +26,7 @@ manip.shuffle    = require(_root..'shuffle')
 
 ---------------------------------------
 -- miscellaneous
+manip.compact    = require(_root..'compact')
 manip.reverse    = require(_root..'reverse')
 manip.notes2midi = require(_root..'notes2midi')
 
