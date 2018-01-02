@@ -26,6 +26,7 @@ class_and_meta.copy       = require(_root..'copy')
 
 class_and_meta.__len			= require(_root..'__len')
 class_and_meta.__concat   = require(_root..'__concat')
+class_and_meta.__ipairs   = require(_root..'__ipairs')
 
 
 
