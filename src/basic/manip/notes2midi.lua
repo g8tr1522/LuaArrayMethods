@@ -45,7 +45,7 @@ end
 -------------------------------------------------------------------------------
 
 local notes2midi = function (t, transpose, octave)
-	octave = octave or 0
+	octave = math.floor(octave) or 0
 	transpose = transpose or 0
 	local ro = {}		--return object
 	
