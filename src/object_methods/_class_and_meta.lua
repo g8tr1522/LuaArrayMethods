@@ -25,6 +25,8 @@ class_and_meta.copy       = require(_root..'copy')
 -- metamethods for lam objects
 
 class_and_meta.__len			= require(_root..'__len')
+class_and_meta.__concat   = require(_root..'__concat')
+
 
 
 return class_and_meta
