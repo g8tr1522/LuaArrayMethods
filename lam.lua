@@ -40,7 +40,11 @@ lam.basic = require(_mainroot..'src/basic')
 --		(see call to setmetatable in lam.new)
 lam.object_methods = require(_mainroot..'src/object_methods')
 lam.object_methods.__index = function (t,k)
-	return lam.object_methods[k]
+	if type(k)=="number" then
+		return t.table[k]
+	elseif type(k)=="string" then
+		return lam.object_methods[k]
+	end
 end
 
 
