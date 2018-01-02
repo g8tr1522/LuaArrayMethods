@@ -25,6 +25,8 @@ u = lam.basic.mult(u, 0.4)
 v = lam.make.range(5)
 v = lam.basic.mult(v, 5)
 
+notes = {'e','d','c','d','e','e','e'}
+
 
 
 

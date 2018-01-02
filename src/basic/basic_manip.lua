@@ -12,22 +12,22 @@ _root = _mainroot.."src/basic/manip/"
 
 ---------------------------------------
 -- substituting vanilla lua functions
-manip.insert   = require(_root..'insert')
-manip.remove   = require(_root..'remove')
+manip.insert     = require(_root..'insert')
+manip.remove     = require(_root..'remove')
 
 ---------------------------------------
 -- math
-manip.add      = require(_root..'add')
-manip.mult     = require(_root..'mult')
+manip.add        = require(_root..'add')
+manip.mult       = require(_root..'mult')
 
 ---------------------------------------
 -- porting from chance submodule
-manip.shuffle  = require(_root..'shuffle')
+manip.shuffle    = require(_root..'shuffle')
 
 ---------------------------------------
 -- miscellaneous
-manip.reverse  = require(_root..'reverse')
-
+manip.reverse    = require(_root..'reverse')
+manip.notes2midi = require(_root..'notes2midi')
 
 
 
