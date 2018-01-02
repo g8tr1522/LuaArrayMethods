@@ -17,7 +17,11 @@ return function (lam_obj, k, v)
 	
 	if type(k)=="number" then
 		if 0<k and k<(#t+2) then
-			t[k] = v
+			if type(v)=="nil" then
+				table.remove(t, k)
+			else
+				t[k] = v
+			end
 		else
 			error("\nAssignment to invalid index."
 					.."\nlam object "..tostring(lam_obj).." only has "..tostring(#lam_obj).." elements."
