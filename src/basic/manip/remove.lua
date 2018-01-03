@@ -64,7 +64,7 @@ function remove (t, arg, arg2)
 			toi[i] = j + (i-1)	-- this preserves the actual index prior to the function call
 			re [i] = vrem(rt,j)
 		end
-		return re, rt --, toi
+		return rt, re --, toi
 		
 	elseif type(arg)=="table" then
 		-- future: `arg` can be out of order, but we must do the pseudocode:
