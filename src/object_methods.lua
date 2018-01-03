@@ -19,14 +19,14 @@ local function insert_methods_from_submodule (submodule_name)
 end
 
 
--- `lamclass` submodule
+-- `class_and_meta` submodule
 insert_methods_from_submodule('_class_and_meta')
 
 -- `transformers` submodule
 insert_methods_from_submodule('_transformers')
 
 -- `manip` submodule
---insert_methods_from_submodule('_manip')
+insert_methods_from_submodule('_manip')
 
 -- `override` submodule
 --insert_methods_from_submodule('_override') -- now in '_class_and_meta' submodule

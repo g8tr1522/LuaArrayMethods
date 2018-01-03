@@ -3,7 +3,7 @@
 --		the destructive underscore functions
 
 manip = {}
-_root = _mainroot.."src/basic/manip/"
+local _root = _mainroot.."src/basic/manip/"
 
 
 
@@ -11,25 +11,15 @@ _root = _mainroot.."src/basic/manip/"
 -- require basic functions here:
 
 ---------------------------------------
--- substituting vanilla lua functions
+-- functions that modify the copy of the VLA
 manip.insert     = require(_root..'insert')
 manip.remove     = require(_root..'remove')
 
 ---------------------------------------
--- math
-manip.add        = require(_root..'add')
-manip.mult       = require(_root..'mult')
-
----------------------------------------
--- porting from chance submodule
-manip.shuffle    = require(_root..'shuffle')
-
----------------------------------------
--- miscellaneous
-manip.compact    = require(_root..'compact')
-manip.reverse    = require(_root..'reverse')
-manip.notes2midi = require(_root..'notes2midi')
+-- functions which create new VLAs
+--manip.copy       = require(_root..'copy')
+--manip.split      = require(_root..'split')
 
 
-
+--_root = nil
 return manip

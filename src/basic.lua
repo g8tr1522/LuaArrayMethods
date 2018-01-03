@@ -1,7 +1,7 @@
 --
 
 basic = {}
-_root = _mainroot.."src/basic/"
+local _root = _mainroot.."src/basic/"
 
 
 local function insert_methods_from_submodule (submodule_name)
@@ -18,7 +18,7 @@ end
 insert_methods_from_submodule('basic_transformers')
 
 -- manipulators
---insert_methods_from_submodule('basic_manip')
+insert_methods_from_submodule('basic_manip')
 
 -- selectors (that don't rely on the `count` property)
 --insert_methods_from_submodule('selectors')

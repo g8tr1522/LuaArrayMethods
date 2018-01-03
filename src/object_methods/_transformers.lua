@@ -21,7 +21,7 @@ local basic_transformers = require(_mainroot.."src/basic/basic_transformers")
 
 
 --=============================================================================
--- add underscored and lam class methods here:
+-- lam class methods here:
 
 local init_keys = {}
 local i = 0

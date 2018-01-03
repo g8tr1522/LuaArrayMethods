@@ -5,7 +5,7 @@
 
 
 class_and_meta = {}
-_root = _mainroot.."src/object_methods/class_and_meta/"
+local _root = _mainroot.."src/object_methods/class_and_meta/"
 
 
 -------------------------------------------------------------------------------
@@ -16,7 +16,8 @@ class_and_meta.settable   = require(_root..'settable')
 
 class_and_meta.unpack     = require(_root..'unpack')
 
-class_and_meta.copy       = require(_root..'copy')
+--class_and_meta.copy       = require(_root..'copy')
+
 --class_and_meta.gettype    = require(_root..'gettype')
 --class_and_meta.printinfo  = require(_root..'printinfo')
 

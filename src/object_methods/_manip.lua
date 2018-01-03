@@ -12,7 +12,7 @@
 manip = {}
 
 --=============================================================================
--- require basic functions here:
+-- require basic manipulators here:
 
 --insert_methods_from_submodule(manip, 'src/methods/basic/manip')
 --local basic = require(_mainroot.."src/methods/_basic")
@@ -21,59 +21,45 @@ local basic_manip = require(_mainroot.."src/basic/basic_manip")
 
 
 --=============================================================================
--- add underscored and lam class methods here:
-
-local init_keys = {}
-local i = 0
-for k,_ in pairs(basic_manip) do
-	i = i+1
-	init_keys[i] = k
-end
-
--- non-destructive functions
-for i,v in ipairs(init_keys) do
-	manip[v] = function (self, ...)
-		local t = self:gettable()
-		local basic_func = basic_manip[v]
-		return basic_func(t, ...)
-	end
-end
-
--- destructive functions (aka, underscored)
-for i,v in ipairs(init_keys) do
-	manip[v..'_'] = function (self, ...)
-		local t = self:gettable()
-		local basic_func = basic_manip[v]
-		local result = basic_func(t, ...)
-		self:settable( result )
-		return self
-	end
-end
+-- add lamarray manipulators here
 
 
-
---=============================================================================
--- handling methods which return multiple arguments
--- for basic methods that return more than one object, 
---		special care must be taken to handle those multiple objects
---		for the destructive/underscored versions of the basic functions.
---
-
-local overridden_underscored = {
+-- destructive functions which modify the lamarray in place
+local d_keys = {
 	"remove",
+	"insert",
 }
 
-for _,v in ipairs(overridden_underscored) do
-	manip[v..'_'] = function (self, ...)
-		local t = self:gettable()
-		local basic_func = basic_manip[v]
-		local returned_args = { basic_func(t, ...) }
-		local new_table = table.remove(returned_args, 1)
-		self:settable( new_table )
-		return self, table.unpack( returned_args )
+for _,key in ipairs(d_keys) do
+	manip[key] = function (self, ...)
+		local basic_func = basic_manip[key]
+		self.table = basic_func(self.table, ...)
 	end
 end
 
+
+-- non-destructive functions which only return new lamarrays (and the original is preserved)			
+-- local nd_keys = {
+	-- "copy",
+	-- "split",
+-- }
+
+-- for _,key in ipairs(nd_keys) do
+	-- manip[key] = function (self, ...)
+		-- local basic_func = basic_manip[key]
+		-- local t = self:gettable()
+		-- local rvs = {}		-- returned values
+		
+		-- rvs={ basic_func(t, ...) }
+		
+		-- for i=1,#rvs do 
+			-- rvs[i] = lam.new( rvs[i] )
+			-- rvs[i].lamtype = key
+		-- end
+		
+		-- return table.unpack(rvs)
+	-- end
+-- end
 
 
 

@@ -3,17 +3,12 @@
 --		the destructive underscore functions
 
 transformers = {}
-_root = _mainroot.."src/basic/transformers/"
+local _root = _mainroot.."src/basic/transformers/"
 
 
 
 --=============================================================================
 -- require basic functions here:
-
----------------------------------------
--- substituting vanilla lua functions
-transformers.insert     = require(_root..'insert')
-transformers.remove     = require(_root..'remove')
 
 ---------------------------------------
 -- math
@@ -31,5 +26,5 @@ transformers.reverse    = require(_root..'reverse')
 transformers.notes2midi = require(_root..'notes2midi')
 
 
-
+--_root = nil
 return transformers
