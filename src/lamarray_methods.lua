@@ -26,7 +26,7 @@ insert_methods_from_submodule('_object_and_meta')
 insert_methods_from_submodule('_transformers')
 
 -- `manip` submodule
-insert_methods_from_submodule('_manip')
+insert_methods_from_submodule('_manipulators')
 
 
 

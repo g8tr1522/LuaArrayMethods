@@ -1,9 +1,9 @@
--- manip submodule which holds all the array manipulators
+-- manipulators submodule which holds all the array manipulators
 -- at the end, we have a function which automatically creates 
 --		the destructive underscore functions
 
-manip = {}
-local _root = _mainroot.."src/basic/manip/"
+manipulators = {}
+local _root = _mainroot.."src/basic/manipulators/"
 
 
 
@@ -12,14 +12,14 @@ local _root = _mainroot.."src/basic/manip/"
 
 ---------------------------------------
 -- functions that modify the copy of the VLA
-manip.insert     = require(_root..'insert')
-manip.remove     = require(_root..'remove')
+manipulators.insert     = require(_root..'insert')
+manipulators.remove     = require(_root..'remove')
 
 ---------------------------------------
 -- functions which create new VLAs
---manip.copy       = require(_root..'copy')
---manip.split      = require(_root..'split')
+--manipulators.copy       = require(_root..'copy')
+--manipulators.split      = require(_root..'split')
 
 
 --_root = nil
-return manip
+return manipulators

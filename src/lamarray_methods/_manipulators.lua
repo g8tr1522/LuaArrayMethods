@@ -1,7 +1,7 @@
--- manip submodule which holds all the array manipulators for lam objects
+-- manipulators submodule which holds all the array manipulators for lam objects
 --
--- We use the functions in 'src/basic/basic_manip.lua' to create these functions
--- The 'manip' (for lam objects) are created automatically
+-- We use the functions in 'src/basic/basic_manipulators.lua' to create these functions
+-- The 'manipulators' (for lam objects) are created automatically
 --		by making them 'wrappers' for the already loaded basic versions.
 -- This is done by using a loop to make the lam class methods (that are just
 --		wrapper functions from each basic function).
@@ -9,14 +9,14 @@
 --		when made by these loops. These are kept in the folder 'overridden_manip'.
 --
 
-manip = {}
+manipulators = {}
 
 --=============================================================================
 -- require basic manipulators here:
 
---insert_methods_from_submodule(manip, 'src/methods/basic/manip')
+--insert_methods_from_submodule(manipulators, 'src/methods/basic/manipulators')
 --local basic = require(_mainroot.."src/methods/_basic")
-local basic_manip = require(_mainroot.."src/basic/basic_manip")
+local basic_manipulators = require(_mainroot.."src/basic/basic_manipulators")
 
 
 
@@ -31,8 +31,8 @@ local d_keys = {
 }
 
 for _,key in ipairs(d_keys) do
-	manip[key] = function (self, ...)
-		local basic_func = basic_manip[key]
+	manipulators[key] = function (self, ...)
+		local basic_func = basic_manipulators[key]
 		self.table = basic_func(self.table, ...)
 	end
 end
@@ -45,8 +45,8 @@ end
 -- }
 
 -- for _,key in ipairs(nd_keys) do
-	-- manip[key] = function (self, ...)
-		-- local basic_func = basic_manip[key]
+	-- manipulators[key] = function (self, ...)
+		-- local basic_func = basic_manipulators[key]
 		-- local t = self:gettable()
 		-- local rvs = {}		-- returned values
 		
@@ -63,5 +63,5 @@ end
 
 
 
---basic_manip = nil
-return manip
+--basic_manipulators = nil
+return manipulators
