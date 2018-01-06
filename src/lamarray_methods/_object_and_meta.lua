@@ -5,7 +5,7 @@
 
 
 class_and_meta = {}
-local _root = _mainroot.."src/lamarray_methods/class_and_meta/"
+local _root = _mainroot.."src/lamarray_methods/object_and_meta/"
 
 
 -------------------------------------------------------------------------------
