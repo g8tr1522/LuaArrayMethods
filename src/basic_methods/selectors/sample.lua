@@ -18,10 +18,6 @@ return function (t, amount)
 		return t[ rand(len) ]
 	elseif type(amount)=="number" then
 		local rt = {} 	-- return table
-		-- local idx = {}
-		-- for i=1,len do
-			-- idx[i] = i
-		-- end
 		
 		for i=1,amount do
 			rt[i] = t[ rand(len) ]

@@ -12,6 +12,7 @@ local _root = "src/basic_methods/selectors/"
 
 
 basic_selectors.sample     = require(_root..'sample')
+basic_selectors.sample_    = require(_root..'sample_')
 
 
 
