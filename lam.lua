@@ -38,12 +38,12 @@ lam.basic = require(_mainroot..'src/basic')
 -- lam class methods
 -- (a lam object accesses these methods)
 --		(see call to setmetatable in lam.new)
-lam.object_methods = require(_mainroot..'src/object_methods')
-lam.object_methods.__index = function (t,k)
+lam.lamarray_methods = require(_mainroot..'src/lamarray_methods')
+lam.lamarray_methods.__index = function (t,k)
 	if type(k)=="number" then
 		return t.table[k]
 	elseif type(k)=="string" then
-		return lam.object_methods[k]
+		return lam.lamarray_methods[k]
 	end
 end
 
@@ -67,7 +67,7 @@ function lam.new (table_or_type, ...)
 		o.lamtype = table_or_type
 	end
 	
-	setmetatable(o, lam.object_methods)
+	setmetatable(o, lam.lamarray_methods)
 	return o
 end
 

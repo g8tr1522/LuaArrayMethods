@@ -1,19 +1,19 @@
 -- lam.obejct_methods
 -- This module contains all methods that lam objects can use. 
 
-object_methods = {}
-local _root = _mainroot.."src/object_methods/"
+lamarray_methods = {}
+local _root = _mainroot.."src/lamarray_methods/"
 
 
 -- general
---object_methods.iterate 	= require(_root..'iterate')
---object_methods.sample 		= require(_root..'sample')
+--lamarray_methods.iterate 	= require(_root..'iterate')
+--lamarray_methods.sample 		= require(_root..'sample')
 
 
 local function insert_methods_from_submodule (submodule_name)
 	local subm = require(_root..submodule_name)
 	for k,v in pairs(subm) do
-		object_methods[k] = v
+		lamarray_methods[k] = v
 	end
 	subm = nil
 end
@@ -33,4 +33,4 @@ insert_methods_from_submodule('_manip')
 
 
 
-return object_methods
+return lamarray_methods
