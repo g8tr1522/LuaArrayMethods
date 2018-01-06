@@ -1,6 +1,6 @@
 -- manipulators submodule which holds all the array manipulators for lam objects
 --
--- We use the functions in 'src/basic/basic_manipulators.lua' to create these functions
+-- We use the functions in 'src/basic_methods/basic_manipulators.lua' to create these functions
 -- The 'manipulators' (for lam objects) are created automatically
 --		by making them 'wrappers' for the already loaded basic versions.
 -- This is done by using a loop to make the lam class methods (that are just
@@ -14,9 +14,9 @@ manipulators = {}
 --=============================================================================
 -- require basic manipulators here:
 
---insert_methods_from_submodule(manipulators, 'src/methods/basic/manipulators')
---local basic = require(_mainroot.."src/methods/_basic")
-local basic_manipulators = require(_mainroot.."src/basic/basic_manipulators")
+--insert_methods_from_submodule(manipulators, 'src/methods/basic_methods/manipulators')
+--local basic_methods = require(_mainroot.."src/methods/_basic_methods")
+local basic_manipulators = require(_mainroot.."src/basic_methods/basic_manipulators")
 
 
 

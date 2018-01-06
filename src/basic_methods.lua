@@ -1,13 +1,13 @@
 --
 
-basic = {}
-local _root = _mainroot.."src/basic/"
+basic_methods = {}
+local _root = _mainroot.."src/basic_methods/"
 
 
 local function insert_methods_from_submodule (submodule_name)
 	local subm = require(_root..submodule_name)
 	for k,v in pairs(subm) do
-		basic[k] = v
+		basic_methods[k] = v
 	end
 	subm = nil
 end
@@ -26,4 +26,4 @@ insert_methods_from_submodule('basic_manipulators')
 
 
 
-return basic
+return basic_methods

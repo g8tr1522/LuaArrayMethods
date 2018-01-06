@@ -1,6 +1,6 @@
 -- transformers submodule which holds all the array transformers for lam objects
 --
--- We use the functions in 'src/basic/basic_transformers.lua' to create these functions
+-- We use the functions in 'src/basic_methods/basic_transformers.lua' to create these functions
 -- The 'transformers' (for lam objects) are created automatically
 --		by making them 'wrappers' for the already loaded basic versions.
 -- This is done by using a loop to make the lam class methods (that are just
@@ -14,9 +14,9 @@ transformers = {}
 --=============================================================================
 -- require basic functions here:
 
---insert_methods_from_submodule(transformers, 'src/methods/basic/transformers')
---local basic = require(_mainroot.."src/methods/_basic")
-local basic_transformers = require(_mainroot.."src/basic/basic_transformers")
+--insert_methods_from_submodule(transformers, 'src/methods/basic_methods/transformers')
+--local basic = require(_mainroot.."src/methods/_basic_methods")
+local basic_transformers = require(_mainroot.."src/basic_methods/basic_transformers")
 
 
 

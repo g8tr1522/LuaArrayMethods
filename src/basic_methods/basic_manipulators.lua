@@ -3,7 +3,7 @@
 --		the destructive underscore functions
 
 manipulators = {}
-local _root = _mainroot.."src/basic/manipulators/"
+local _root = _mainroot.."src/basic_methods/manipulators/"
 
 
 
