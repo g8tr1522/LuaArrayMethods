@@ -5,7 +5,7 @@
 ----
 --
 
-idx = require(_mainroot..'src/make/idx')
+local idx = require(_mainroot..'src/make/idx')
 --require('Chance/chance')
 
 idx_shuffle = function (last)
