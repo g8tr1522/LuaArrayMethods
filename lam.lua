@@ -6,7 +6,7 @@ lam = {}
 _mainroot = _lamroot or ''	--folder that lam.lua is kept in 
 
 
-unpack = unpack or table.unpack  -- Renoise API does not have table.unpacks
+unpack = unpack or table.unpack  -- Renoise API does not have table.unpack
 
 
 -- This is a global function that other submodules will use to insert methods
