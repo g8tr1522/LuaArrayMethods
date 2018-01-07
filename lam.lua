@@ -41,6 +41,8 @@ lam.basic = require(_mainroot..'src/basic_methods')
 lam.lamarray_methods = require(_mainroot..'src/lamarray_methods')
 lam.lamarray_methods.__index = function (t,k)
 	if type(k)=="number" then
+		k = k % #t.table
+		if k==0 then k=k+#t.table end
 		return t.table[k]
 	elseif type(k)=="string" then
 		return lam.lamarray_methods[k]
