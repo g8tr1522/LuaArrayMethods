@@ -57,7 +57,7 @@ end
 			-- rvs[i].lamtype = key
 		-- end
 		
-		-- return table.unpack(rvs)
+		-- return unpack(rvs)
 	-- end
 -- end
 

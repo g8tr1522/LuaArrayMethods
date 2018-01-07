@@ -71,7 +71,7 @@ for _,v in ipairs(overridden_underscored) do
 		local returned_args = { basic_func(t, ...) }
 		local new_table = table.remove(returned_args, 1)
 		self:settable( new_table )
-		return self, table.unpack( returned_args )
+		return self, unpack( returned_args )
 	end
 end
 
