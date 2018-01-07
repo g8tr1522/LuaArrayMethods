@@ -28,7 +28,7 @@ end
 -- requires
 
 -- require chance repo/submodule
-chance = require(_mainroot..'chance/chance')
+-- chance = require(_mainroot..'chance/chance')
 
 
 -- make methods

@@ -1,6 +1,3 @@
 [submodule "chance.lua"]
 	path = chance.lua
 	url = https://github.com/ejmr/chance.lua.git
-[submodule "chance"]
-	path = chance
-	url = https://github.com/ejmr/chance.lua.git
