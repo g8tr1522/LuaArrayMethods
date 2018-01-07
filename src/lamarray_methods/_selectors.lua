@@ -2,13 +2,13 @@
 -- this module has functions which returns single values from an array
 
 selectors = {}
-local _root = _mainroot.."src/object_methods/selectors/"
+--local _root = _mainroot.."src/object_methods/selectors/"
 
 
 --=============================================================================
 -- require basic selectors here:
 
-basic_selectors = require('src/basic_methods/basic_selectors')
+basic_selectors = require(_mainroot..'src/basic_methods/basic_selectors')
 
 
 

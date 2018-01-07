@@ -7,7 +7,7 @@
 --
 
 basic_selectors = {}
-local _root = "src/basic_methods/selectors/"
+local _root = _mainroot.."src/basic_methods/selectors/"
 
 
 
