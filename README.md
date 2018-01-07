@@ -85,51 +85,56 @@ Then in your main file, you should add two statements:
 	
 	
 ## Categorization of methods:
-- lam class methods
-	- The `lam` module has four basic uses:
-		- make vanilla lua arrays (VLAs) with `lam.make` functions
-		- work on VLAs with `lam.basic` functions
-		- make a "lam object" with `lam.new(...)`
-		- get an iterator from `lam.iters` (coming soon...)
+**lam module methods**
+
+- The `lam` module has four basic uses:
+	- make vanilla lua arrays (VLAs) with `lam.make` functions
+	- work on VLAs with `lam.basic` functions
+	- make a "lam object" with `lam.new(...)`
+	- get an iterator from `lam.iters` (coming soon...)
 - There are two type of objects you can call the basic methods on:
 	- On a vanilla lua array (accessed from `lam.basic`) 
         - As of now, all are accessed by doing `lam.basic.foo(vla, ...)`. That is, you should always pass your array as the first argument.
 		- This style of calling will never modify the original array - it only returns the result (which may be a new array).
 	- On a lamarray (accessed with colon syntax on lamarray objects)
-- Basic functions
-	- Comes in three styles:
-		- 'Transformers'
-			- These operate on all elements of an array
-			- Always returns a new array, which is a transformed copy of the original
-		- 'Manipulators'
-            - These are sort of 'meta' functions. 
-            - These can destroy or add elements from the original array, or they may return several arrays.
-		- 'Selectors'
-			- These are methods that may only return a single element
-			- Eg, select a random element, or progressively 'count' through the array.
-			- Some selectors have an 'underscored' version of themselves. These are the 'unique' versions of the original. 
-                - eg, `sample(t, 3)` returns 3 random elements from `t`.
-                - but `sample_(t, 3)` returns 3 unique random elements from `t`.
-			- These functions may also return multiple values.
-			- Some selectors work only on lamarrays.
-- lam object functions
-	- lam objects have the all the basic methods. 
-		- They are accessed with the colon syntax.
-		- `lam_obj:basicfoo(...)`
-	- Manipulators:
-		- Come in two styles: "non-destructive", and "underscored"/"destructive"
-		- Non-destructive manipulators:
-			- These have a caveat: Doing `lam_obj:manip(...)` doesn't change the VLA in `lam_obj`
-			- This would return the new result though.
-			- More specifically, these return a VLA with the new result. (This may change in the future)
-		- Underscored/Destructive manipulators:
-			- If you want to change `lam_obj` with a manipulator, add an underscore to the end of the function call:
-			- `lam_obj:basicfoo_(...)` Permanently changes the VLA inside `lam_obj`
-			- These have a cool 'chaining' feature. 
-			- Eg, you can do this: `lam_obj:add_(5):shuffle_():mult_(1/3)`
-			- This is because all underscored methods return `self` as it's first return value.
-	- 'meta' or 'object' functions
-		- These are methods that work specifically on lam objects.
+
+**Basic functions**
+
+- Comes in three styles:
+	- 'Transformers'
+		- These operate on all elements of an array
+		- Always returns a new array, which is a transformed copy of the original
+	- 'Manipulators'
+		- These are sort of 'meta' functions. 
+		- These can destroy or add elements from the original array, or they may return several arrays.
+	- 'Selectors'
+		- These are methods that may only return a single element
+		- Eg, select a random element, or progressively 'count' through the array.
+		- Some selectors have an 'underscored' version of themselves. These are the 'unique' versions of the original. 
+			- eg, `sample(t, 3)` returns 3 random elements from `t`.
+			- but `sample_(t, 3)` returns 3 unique random elements from `t`.
+		- These functions may also return multiple values.
+		- Some selectors work only on lamarrays.
+		
+**lamarray methods**
+
+- lam objects have the all the basic functions as class methods. 
+	- They are accessed with the colon syntax.
+	- `lam_obj:basicfoo(...)`
+- Manipulators:
+	- Come in two styles: "non-destructive", and "underscored"/"destructive"
+	- Non-destructive manipulators:
+		- These have a caveat: Doing `lam_obj:manip(...)` doesn't change the VLA in `lam_obj`
+		- This would return the new result though.
+		- More specifically, these return a VLA with the new result. (This may change in the future)
+	- Underscored/Destructive manipulators:
+		- If you want to change `lam_obj` with a manipulator, add an underscore to the end of the function call:
+		- `lam_obj:basicfoo_(...)` Permanently changes the VLA inside `lam_obj`
+		- These have a cool 'chaining' feature. 
+		- Eg, you can do this: `lam_obj:add_(5):shuffle_():mult_(1/3)`
+		- This is because all underscored methods return `self` as it's first return value.
+- 'meta' or 'object' functions
+	- These are methods that work specifically on lam objects.
 
 
 
