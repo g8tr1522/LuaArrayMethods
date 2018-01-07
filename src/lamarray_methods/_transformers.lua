@@ -35,7 +35,8 @@ for i,v in ipairs(init_keys) do
 	transformers[v] = function (self, ...)
 		local t = self:gettable()
 		local basic_func = basic_transformers[v]
-		return basic_func(t, ...)
+		local first_result = basic_func(t, ...)	-- may need to handle
+		return lam.new( first_result )
 	end
 end
 
