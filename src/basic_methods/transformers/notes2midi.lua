@@ -46,7 +46,9 @@ end
 
 local notes2midi = function (t, transpose, octave)
 --handle input args (except t)
-	octave = math.floor(octave) or 0
+	octave = octave or 0
+	octave = math.floor(octave)
+	
 	if type(transpose)=="number" then
 		transpose = math.floor(transpose)
 	elseif type(transpose)=="string" then
