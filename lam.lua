@@ -4,8 +4,7 @@
 -- module and other globals used for loading
 lam = {}
 
-local _old_mainroot = ''
-if _mainroot then _old_mainroot = _mainroot end  -- stash old mainroot and reload it at the end of this file
+local _old_mainroot = _mainroot or ''  -- stash old mainroot and reload it at the end of this file
 _mainroot = _lamroot or ''	--folder that lam.lua is kept in 
 
 
