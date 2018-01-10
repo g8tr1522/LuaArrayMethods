@@ -10,16 +10,17 @@ return function (t, weights)
 	
 -- get sum of `weights`, and get a modified copy of `weights` (`w`)
 	local w = {}
-	
 	local sum = 0
+	
 	for i=1,#weights do
 		sum = sum + weights[i]
 		w[i] = sum	-- this creates a table of sums of ( weights[i] + <the previous weights> )
 	end
 	
 -- now perform algo
-	randval = sum * rand()
-	chosen_index = 0
+	local randval = sum * rand()
+	local chosen_index = 0
+	
 	for i=1,#w do
 		if randval <= w[i] then
 			chosen_index = i
