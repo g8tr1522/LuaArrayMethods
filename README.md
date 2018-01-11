@@ -27,6 +27,10 @@ I eventually plan on adding a full documentation either on this repo's GitHub wi
 ## Quick Overview
 - creates vanilla lua arrays from 'maker' functions
     - `arr = lam.make.range(-0.5, 1, 2.5)`  -->  {-0.5, 0.5, 1.5, 2.5}
+- operate on vanilla lua arrays (VLAs)
+    - `lam.basic.foo(vla, ...)` 
+    - `lam.basic.mult(arr, 1/0.5)`	 -->  {-1, 1, 3, 5}
+	- in the above two examples, `vla` and `arr` are left unchanged
 - modify a vanilla lua array:
     - `vla = lam.basic.foo(vla, ...)`
     - `arr = lam.basic.mult(arr, 1/0.5)`	 -->  {-1, 1, 3, 5}
@@ -47,10 +51,10 @@ I eventually plan on adding a full documentation either on this repo's GitHub wi
 		- `o2[4]`, `o2[-1]`, and `o2[0]` return `-0.5`, `0.5`, and `2.5` respectively
 - lamarray methods have all the 'basic' methods:
     - `o2:shuffle()`   --> could be {-0.5, 2.5, 0.5}, but `o2` hasn't changed
-    - `o2:shuffle_()`  --  use an underscore to change the table in place. 
+    - `o2:shuffle_()`  --  use an underscore to change the lamarray in place. 
 - The manipulator methods can be 'chained' (like in Ruby)
 	- Use underscores to change the lamarray in place (like the `!` in Ruby)
-    - `o2:add_(1):add_(1)`  --> should be {1.5, 2.5, 4.5} (if we didn't shuffle)
+    - `o2:add_(1):add_(1)`  --> `o2` should now be {1.5, 2.5, 4.5} (if we didn't shuffle)
 	- no underscores preserves the original lamarray, but returns a new lamarray with the result
 	- `o2:add(-2)`  --> this returns a new lamarray with {-0.5, 0.5, 2.5}
 - some lamarray-specific methods:
@@ -85,16 +89,16 @@ I eventually plan on adding a full documentation either on this repo's GitHub wi
 ## Categorization of methods:
 **lam module methods**
 
-- The `lam` module has four basic uses:
+- The `lam` module has three basic uses:
 	- make vanilla lua arrays (VLAs) with `lam.make` functions
-	- work on VLAs with `lam.basic` functions
-	- make a "lam object" with `lam.new(...)`
-	- get an iterator from `lam.iters` (coming soon...)
+	- make a lamarray with `lam.new(...)`
+	- work on VLAs and lamarrays with the `lam.basic` functions
 - There are two type of objects you can call the basic methods on:
 	- On a vanilla lua array (accessed from `lam.basic`) 
         - As of now, all are accessed by doing `lam.basic.foo(vla, ...)`. That is, you should always pass your array as the first argument.
 		- This style of calling will never modify the original array - it only returns the result (which may be a new array).
 	- On a lamarray (accessed with colon syntax on lamarray objects)
+		- using basic methods on lamarrays will never modify the lamarray unless it's an "underscored" manipulator (see below)
 
 **Basic functions**
 
@@ -121,6 +125,7 @@ I eventually plan on adding a full documentation either on this repo's GitHub wi
 	- `lam_obj:basicfoo(...)` -- (don't ever pass the object when using the colon syntax).
 - Manipulators:
 	- Come in two styles: "non-destructive", and "underscored"/"destructive"
+	- always returns a lamarray 
 	- Non-destructive manipulators:
 		- These have a caveat: Doing `lam_obj:manip(...)` doesn't change the VLA in `lam_obj`
 		- This would return the new result though. 
@@ -133,6 +138,7 @@ I eventually plan on adding a full documentation either on this repo's GitHub wi
 		- This is because all underscored methods return a reference to the original (but modified) lamarray.
 - 'meta' or 'object' functions
 	- These are methods that work specifically on lam objects.
+	- They include the overridden metamethods, but also include `gettable` and `settable`.
 
 
 
