@@ -3,7 +3,6 @@ My attempt at bringing Ruby-style array methods to lua.
 Initial release coming soon! The master branch will always have the lastest stable release.
 
 
-
 ### What is it?
 Ever had an array of numbers, and you just needed to add a value to all of them? 
 Or maybe you miss having the handy array methods that Ruby offers.
@@ -14,27 +13,16 @@ You could write functions so that your loops aren't cluttering everything.
 Or if you're clever (ie, stubborn) like me, then you'd write a library to handle all this!
 
 
+### This is an incomplete project!
+This project is in the alpha stage. There are several implementation improvements I haven't gotten around to, and I still have plenty of more functions to add.
 
-
-### Installation
-_If "lam.lua" is in the root directory of your main file_, 
-then simply require the `lam` module from "lam.lua" and you should be good to go.
-
-_Else,_ 
-declare a global constant `_lamroot` in your main. 
-This should be a string containing the path to "lam.lua" relative to your main file.
-
-Eg, if your project folder was: 
-    - 'project/main.lua' 
-    - 'project/src/LuaArrayMethods/lam.lua'
-Then in your main file, you should add two statements:
-    - `_lamroot = 'src/LuaArrayMethods/'`
-    - `lam = require(_lamroot..'lam')`
+I don't have much documentation other than what's provided in this README. 
+Some functions have explanations in their respective source files, escpecially the less obvious ones. 
+I eventually plan on adding a full documentation either on this repo's GitHub wiki, or as an Ldoc.
 
 	
-	
 
-# **Basic usage**
+# **How to use the lam module**
 
 ## Quick Overview
 - creates vanilla lua arrays from 'maker' functions
@@ -42,24 +30,32 @@ Then in your main file, you should add two statements:
 - modify a vanilla lua array:
     - `vla = lam.basic.foo(vla, ...)`
     - `arr = lam.basic.mult(arr, 1/0.5)`	 -->  {-1, 1, 3, 5}
-- create a lam object
+- create a 'lamarray' (an object from `lam.new`)
     - `o = lam.new( {...} )`
     - `o2 = lam.new("range", -0.5, 1, 2.5)`
-- lam objects act like vanilla lua arrays
+- lamarrays act like vanilla lua arrays
     - `#o2`         --> 4
     - `o2[3]`       --> 1.5
     - `o2[3]='n'`   --> o2 is now {-0.5, 0.5, 'n', 2.5}
     - `o2[3]=nil`   --> o2 is now {-0.5, 0.5, 2.5}  (this may change in the future)
-    - `o:unpack()`  --  don't use `table.unpack(o)`
     - pass `o` to `ipairs`. No suprises!
-- lam object methods act like the 'basic' methods:
-    - `o2:shuffle()` 	 --> could be {-0.5, 2.5, 0.5}, but `o2` hasn't changed
+- but there are some exceptions:
+    - `o:unpack()`  --  don't use `table.unpack(o)`
+	- don't pass `o` to `pairs` unless you want to access its object properties!
+	- you can access indices beyond the bounds of a lamarray
+		- `o2` has a length of three, but you can index beyond three!
+		- `o2[4]`, `o2[-1]`, and `o2[0]` return `-0.5`, `0.5`, and `2.5` respectively
+- lamarray methods have all the 'basic' methods:
+    - `o2:shuffle()`   --> could be {-0.5, 2.5, 0.5}, but `o2` hasn't changed
     - `o2:shuffle_()`  --  use an underscore to change the table in place. 
-- some methods can be 'chained' (like in Ruby) (must be underscored)
-    - `o2:add_(1):add_(1)`  --> could be {1.5, 4.5, 2.5}
-- some class-specific methods:
-    - `o3 = o2:copy()`      -- `o3` is now a distinct copy (and NOT a reference to) `o2`
-    - `vla_version = o2:gettable()`  -- `vla_version` is just a distinct, vanilla lua table.
+- The manipulator methods can be 'chained' (like in Ruby)
+	- Use underscores to change the lamarray in place (like the `!` in Ruby)
+    - `o2:add_(1):add_(1)`  --> should be {1.5, 2.5, 4.5} (if we didn't shuffle)
+	- no underscores preserves the original lamarray, but returns a new lamarray with the result
+	- `o2:add(-2)`  --> this returns a new lamarray with {-0.5, 0.5, 2.5}
+- some lamarray-specific methods:
+    - `o3 = o2:copy()`       -- `o3` is now a distinct copy (and NOT a reference to) `o2`
+    - `vla = o2:gettable()`  -- `vla` is just a distinct vanilla lua table, with the values from `o2`
 
 
 	
@@ -69,6 +65,7 @@ Then in your main file, you should add two statements:
 	- All elements should be indexed numerically.
 	- Eg, the array made by `arr = {10,20,30,'a','b','c'}`
 - A "lamarray" is an object declared from `lam.new(...)`
+- An "array" means either a VLA or a lamarray
 - You should try to keep arrays 'contiguous', ie, without `nil` elements.
 	- The `compact` manipulator function can remove `nil` elements.
 - Underscored methods.
@@ -76,11 +73,12 @@ Then in your main file, you should add two statements:
 	- selector functions have underscored versions which are the 'unique' versions of themselves.
         - eg, `sample(t, 3)` returns 3 random elements from `t`.
         - but `sample_(t, 3)` returns 3 unique random elements from `t`.
+		- if you want the `shuffle` manipulator to return a unique array, use `sattolo` (not implemented yet)
 	- For lamarray manipulators, the underscored versions will replace the lamarray with the new one. There are no underscored _basic_ manipulators.
         - eg, `obj:add(3)` returns a new lamarray which is a copy of `obj`, but with `3` added to every element.
         - but `obj:add_(3)` returns `obj`, but `obj` now permanently has `3` added to every element.
 - As of now, I have not provided encapsulation. 
-	So be careful and try not to modify the `lam` module or any properties of lam objects.
+	So be careful and try not to modify the `lam` module or any properties of lam objects. (unless you're modifying the source of course).
 	
 	
 	
@@ -118,28 +116,46 @@ Then in your main file, you should add two statements:
 		
 **lamarray methods**
 
-- lam objects have the all the basic functions as class methods. 
+- lam objects have the all the Basic functions as class methods. 
 	- They are accessed with the colon syntax.
-	- `lam_obj:basicfoo(...)`
+	- `lam_obj:basicfoo(...)` -- (don't ever pass the object when using the colon syntax).
 - Manipulators:
 	- Come in two styles: "non-destructive", and "underscored"/"destructive"
 	- Non-destructive manipulators:
 		- These have a caveat: Doing `lam_obj:manip(...)` doesn't change the VLA in `lam_obj`
-		- This would return the new result though.
-		- More specifically, these return a VLA with the new result. (This may change in the future)
+		- This would return the new result though. 
+		- These always return a new copy of the original lamarray.
 	- Underscored/Destructive manipulators:
 		- If you want to change `lam_obj` with a manipulator, add an underscore to the end of the function call:
 		- `lam_obj:basicfoo_(...)` Permanently changes the VLA inside `lam_obj`
 		- These have a cool 'chaining' feature. 
 		- Eg, you can do this: `lam_obj:add_(5):shuffle_():mult_(1/3)`
-		- This is because all underscored methods return `self` as it's first return value.
+		- This is because all underscored methods return a reference to the original (but modified) lamarray.
 - 'meta' or 'object' functions
 	- These are methods that work specifically on lam objects.
 
 
 
 
-# Why did you do this?
+# **Installation**
+_If "lam.lua" is in the root directory of your main file_, 
+then simply require the `lam` module from "lam.lua" and you should be good to go.
+
+_Else,_ 
+declare a global constant `_lamroot` in your main. 
+This should be a string containing the path to "lam.lua" relative to your main file.
+
+Eg, if your project folder was: 
+    - 'project/main.lua' 
+    - 'project/src/LuaArrayMethods/lam.lua'
+Then in your main file, you should add two statements:
+    - `_lamroot = 'src/LuaArrayMethods/'`
+    - `lam = require(_lamroot..'lam')`
+
+	
+
+
+# **Why did you do this?**
 I wrote this to assist with music-making purposes. But fear not: lam is very generic and the only music-related function is 'notes2midi'.
 
 I did this to try and emulate the handy Ruby array methods that I grew fond of using from _SonicPi_ (a music-making 'IDE' of sorts which uses Ruby). 

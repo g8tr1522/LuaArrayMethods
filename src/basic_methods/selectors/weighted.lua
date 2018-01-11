@@ -1,6 +1,17 @@
---local sum = require(_mainroot..'src/basic_methods/selectors/sum')
+-- lam.basic.weighted (t, weights)
+--
+-- returns a single value from t, with corresponding weights in `weights`
+--
+-- example:
+--    `lam.basic.weighted( {"true", "false"}, {1, 10} )
+--		This returns true 1/11 times, and false 10/11 times.
+--
+--
 
+
+--local sum = require(_mainroot..'src/basic_methods/selectors/sum')
 local rand = math.random
+
 
 return function (t, weights)
 	if #t ~= #weights then
