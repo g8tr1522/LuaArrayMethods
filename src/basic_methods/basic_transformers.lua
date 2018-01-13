@@ -16,14 +16,15 @@ transformers.add        = require(_root..'add')
 transformers.mult       = require(_root..'mult')
 
 ---------------------------------------
--- porting from chance submodule
-transformers.shuffle    = require(_root..'shuffle')
+-- utility
+transformers.compact    = require(_root..'compact')
+transformers.sort       = require(_root..'sort')
 
 ---------------------------------------
 -- miscellaneous
-transformers.compact    = require(_root..'compact')
 transformers.reverse    = require(_root..'reverse')
 transformers.notes2midi = require(_root..'notes2midi')
+transformers.shuffle    = require(_root..'shuffle')
 
 
 --_root = nil

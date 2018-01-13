@@ -39,27 +39,27 @@ end
 
 
 -- non-destructive functions which only return new lamarrays (and the original is preserved)			
--- local nd_keys = {
-	-- "copy",
-	-- "split",
--- }
+local nd_keys = {
+	"copy",
+	"split",
+}
 
--- for _,key in ipairs(nd_keys) do
-	-- manipulators[key] = function (self, ...)
-		-- local basic_func = basic_manipulators[key]
-		-- local t = self:gettable()
-		-- local rvs = {}		-- returned values
+for _,key in ipairs(nd_keys) do
+	manipulators[key] = function (self, ...)
+		local basic_func = basic_manipulators[key]
+		local t = self:gettable()
+		local rvs = {}		-- returned values
 		
-		-- rvs={ basic_func(t, ...) }
+		rvs={ basic_func(t, ...) }
 		
-		-- for i=1,#rvs do 
-			-- rvs[i] = lam.new( rvs[i] )
-			-- rvs[i].lamtype = key
-		-- end
+		for i=1,#rvs do 
+			rvs[i] = lam.new( rvs[i] )
+			rvs[i].lamtype = key
+		end
 		
-		-- return unpack(rvs)
-	-- end
--- end
+		return unpack(rvs)
+	end
+end
 
 
 
