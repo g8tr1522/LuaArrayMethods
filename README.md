@@ -20,11 +20,11 @@ This project is in the alpha stage. There are several implementation improvement
 
 I don't have much documentation. 
 
-	- See the section "How to use the lam module" in this README. 
-	- There are brief function explanations in the [wiki](https://github.com/g8tr1522/LuaArrayMethods/wiki). 
-	- [Click here](https://github.com/g8tr1522/LuaArrayMethods/wiki/docs-:-methods) to see explanations of the various array methods.
-	- If you need more detailed explanations for a function, some have explanations in their respective source files, escpecially the less obvious ones. 
-	- I eventually plan on adding a full documentation either on this repo's GitHub wiki, or as an Ldoc.
+- See the section "How to use the lam module" in this README. 
+- There are brief function explanations in the [wiki](https://github.com/g8tr1522/LuaArrayMethods/wiki). 
+- [Click here](https://github.com/g8tr1522/LuaArrayMethods/wiki/docs-:-methods) to see explanations of the various array methods.
+- If you need more detailed explanations for a function, some have explanations in their respective source files, escpecially the less obvious ones. 
+- I eventually plan on adding a full documentation either on this repo's GitHub wiki, or as an Ldoc.
 
 ### Installation
 _If "lam.lua" is in the root directory of your main file_, 
