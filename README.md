@@ -1,8 +1,6 @@
 # **LuaArrayMethods** (aka, "lam")
 My attempt at bringing Ruby-style array methods to lua.
 
-Initial release coming soon! The master branch will always have the lastest stable release.
-
 Documentation here :
 https://github.com/g8tr1522/LuaArrayMethods/wiki/Documentation
 
@@ -21,6 +19,7 @@ Or if you're clever (ie, stubborn) like me, then you'd write a library to handle
 This project is in the alpha stage. There are several implementation improvements I haven't gotten around to, and I still have plenty of more functions to add.
 
 I don't have much documentation. 
+
 	- See the section "How to use the lam module" in this README. 
 	- There are brief function explanations in the [wiki](https://github.com/g8tr1522/LuaArrayMethods/wiki). 
 	- [Click here](https://github.com/g8tr1522/LuaArrayMethods/wiki/docs-:-methods) to see explanations of the various array methods.
