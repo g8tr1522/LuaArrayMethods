@@ -1,6 +1,10 @@
 # **LuaArrayMethods** (aka, "lam")
 My attempt at bringing Ruby-style array methods to lua.
+
 Initial release coming soon! The master branch will always have the lastest stable release.
+
+Documentation here :
+https://github.com/g8tr1522/LuaArrayMethods/wiki/Documentation
 
 
 ### What is it?
@@ -16,45 +20,65 @@ Or if you're clever (ie, stubborn) like me, then you'd write a library to handle
 ### This is an incomplete project!
 This project is in the alpha stage. There are several implementation improvements I haven't gotten around to, and I still have plenty of more functions to add.
 
-I don't have much documentation other than what's provided in this README. 
-Some functions have explanations in their respective source files, escpecially the less obvious ones. 
-I eventually plan on adding a full documentation either on this repo's GitHub wiki, or as an Ldoc.
+I don't have much documentation. 
+	- See the section "How to use the lam module" in this README. 
+	- There are brief function explanations in the [wiki](https://github.com/g8tr1522/LuaArrayMethods/wiki). 
+	- [Click here](https://github.com/g8tr1522/LuaArrayMethods/wiki/docs-:-methods) to see explanations of the various array methods.
+	- If you need more detailed explanations for a function, some have explanations in their respective source files, escpecially the less obvious ones. 
+	- I eventually plan on adding a full documentation either on this repo's GitHub wiki, or as an Ldoc.
 
-	
+### Installation
+_If "lam.lua" is in the root directory of your main file_, 
+then simply require the `lam` module from "lam.lua" and you should be good to go.
+
+_Else,_ 
+declare a global constant `_lamroot` in your main. 
+This should be a string containing the path to "lam.lua" relative to your main file.
+
+Eg, if your project folder was: 
+    - 'project/main.lua' 
+    - 'project/src/LuaArrayMethods/lam.lua'
+Then in your main file, you should add two statements:
+    - `_lamroot = 'src/LuaArrayMethods/'`
+    - `lam = require(_lamroot..'lam')`
+
+
+
 
 # **How to use the lam module**
 
 ## Quick Overview
 - creates vanilla lua arrays from 'maker' functions
     - `arr = lam.make.range(-0.5, 1, 2.5)`  -->  {-0.5, 0.5, 1.5, 2.5}
-- operate on vanilla lua arrays (VLAs)
+- operate on vanilla lua arrays (VLAs) with the 'Basic methods'
+	- `lam.basic.copy(vla)`
     - `lam.basic.foo(vla, ...)` 
     - `lam.basic.mult(arr, 1/0.5)`	 -->  {-1, 1, 3, 5}
 	- in the above two examples, `vla` and `arr` are left unchanged
-- modify a vanilla lua array:
+	- modify VLAs with assignment:
     - `vla = lam.basic.foo(vla, ...)`
     - `arr = lam.basic.mult(arr, 1/0.5)`	 -->  {-1, 1, 3, 5}
 - create a 'lamarray' (an object from `lam.new`)
     - `o = lam.new( {...} )`
     - `o2 = lam.new("range", -0.5, 1, 2.5)`
-- lamarrays act like vanilla lua arrays
+- lamarrays act like vanilla lua arrays in some ways
     - `#o2`         --> 4
     - `o2[3]`       --> 1.5
     - `o2[3]='n'`   --> o2 is now {-0.5, 0.5, 'n', 2.5}
-    - `o2[3]=nil`   --> o2 is now {-0.5, 0.5, 2.5}  (this may change in the future)
     - pass `o` to `ipairs`. No suprises!
-- but there are some exceptions:
+- but there are exceptions:
+    - `o2[3]=nil`   --> o2 is now {-0.5, 0.5, 2.5}  (this may change in the future)
     - `o:unpack()`  --  don't use `table.unpack(o)`
 	- don't pass `o` to `pairs` unless you want to access its object properties!
 	- you can access indices beyond the bounds of a lamarray
 		- `o2` has a length of three, but you can index beyond three!
 		- `o2[4]`, `o2[-1]`, and `o2[0]` return `-0.5`, `0.5`, and `2.5` respectively
-- lamarray methods have all the 'basic' methods:
-    - `o2:shuffle()`   --> could be {-0.5, 2.5, 0.5}, but `o2` hasn't changed
-    - `o2:shuffle_()`  --  use an underscore to change the lamarray in place. 
-- The manipulator methods can be 'chained' (like in Ruby)
+- lamarray methods have all the 'basic' methods. Access them with the colon syntax :
+    - `o2:sample()`
+	- `o2:add(1)` -- `o2` is still {-0.5, 0.5, 2.5} (see below)
+- lamarray manipulator methods can be 'chained' (like in Ruby)
 	- Use underscores to change the lamarray in place (like the `!` in Ruby)
-    - `o2:add_(1):add_(1)`  --> `o2` should now be {1.5, 2.5, 4.5} (if we didn't shuffle)
+    - `o2:add_(1):add_(1)`  --> `o2` should now be {1.5, 2.5, 4.5}
 	- no underscores preserves the original lamarray, but returns a new lamarray with the result
 	- `o2:add(-2)`  --> this returns a new lamarray with {-0.5, 0.5, 2.5}
 - some lamarray-specific methods:
@@ -68,6 +92,7 @@ I eventually plan on adding a full documentation either on this repo's GitHub wi
 - A "vanilla lua array" (or VLA) is just a contiguous table of other objects.
 	- All elements should be indexed numerically.
 	- Eg, the array made by `arr = {10,20,30,'a','b','c'}`
+	- this is formally known as a "sequence" in lua. I will need to update the documentation to reflect this.
 - A "lamarray" is an object declared from `lam.new(...)`
 - An "array" means either a VLA or a lamarray
 - You should try to keep arrays 'contiguous', ie, without `nil` elements.
@@ -139,24 +164,6 @@ I eventually plan on adding a full documentation either on this repo's GitHub wi
 - 'meta' or 'object' functions
 	- These are methods that work specifically on lam objects.
 	- They include the overridden metamethods, but also include `gettable` and `settable`.
-
-
-
-
-# **Installation**
-_If "lam.lua" is in the root directory of your main file_, 
-then simply require the `lam` module from "lam.lua" and you should be good to go.
-
-_Else,_ 
-declare a global constant `_lamroot` in your main. 
-This should be a string containing the path to "lam.lua" relative to your main file.
-
-Eg, if your project folder was: 
-    - 'project/main.lua' 
-    - 'project/src/LuaArrayMethods/lam.lua'
-Then in your main file, you should add two statements:
-    - `_lamroot = 'src/LuaArrayMethods/'`
-    - `lam = require(_lamroot..'lam')`
 
 	
 
