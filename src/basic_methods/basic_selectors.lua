@@ -14,11 +14,11 @@ local _root = _mainroot.."src/basic_methods/selectors/"
 basic_selectors.sample     = require(_root..'sample')
 basic_selectors.sample_    = require(_root..'sample_')
 
-
 basic_selectors.sum        = require(_root..'sum')
 
-
 basic_selectors.weighted   = require(_root..'weighted')
+
+basic_selectors.compare    = require(_root..'compare')
 
 
 

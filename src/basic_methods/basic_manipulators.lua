@@ -17,8 +17,8 @@ manipulators.remove     = require(_root..'remove')
 
 ---------------------------------------
 -- functions which create new VLAs
---manipulators.copy       = require(_root..'copy')
---manipulators.split      = require(_root..'split')
+manipulators.copy       = require(_root..'copy')
+manipulators.split      = require(_root..'split')
 
 
 --_root = nil

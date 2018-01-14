@@ -4,7 +4,7 @@
 local vsort = table.sort
 
 return function (t, sf)
-	local rt = lam.vla_copy(t)
+	local rt = lam.copy_vla(t)
 	
 	vsort(rt, sf)
 	
