@@ -16,12 +16,14 @@ transformers.add        = require(_root..'add')
 transformers.mult       = require(_root..'mult')
 transformers.div        = require(_root..'div')
 transformers.round      = require(_root..'round')
+transformers.clamp      = require(_root..'clamp')
 
 ---------------------------------------
 -- order
 transformers.reverse    = require(_root..'reverse')
 transformers.shuffle    = require(_root..'shuffle')
 transformers.sort       = require(_root..'sort')
+transformers.swap       = require(_root..'swap')
 
 ---------------------------------------
 -- boolean
@@ -33,6 +35,8 @@ transformers.vals2bools = require(_root..'vals2bools')
 transformers.compact    = require(_root..'compact')
 transformers.notes2midi = require(_root..'notes2midi')
 transformers.dofunction = require(_root..'dofunction')
+transformers.slice      = require(_root..'slice')
+transformers.replace    = require(_root..'replace')
 
 
 --_root = nil

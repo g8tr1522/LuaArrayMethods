@@ -14,6 +14,7 @@ local _root = _mainroot.."src/basic_methods/manipulators/"
 -- functions that modify the copy of the VLA
 manipulators.insert     = require(_root..'insert')
 manipulators.remove     = require(_root..'remove')
+--manipulators.reorder    = require(_root..'reorder')
 
 ---------------------------------------
 -- functions which create new VLAs
