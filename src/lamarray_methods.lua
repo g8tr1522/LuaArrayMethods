@@ -19,8 +19,6 @@ local function insert_methods_from_submodule (submodule_name)
 end
 
 
--- `object_and_meta` submodule
-insert_methods_from_submodule('_object_and_meta')
 
 -- `transformers` submodule
 insert_methods_from_submodule('_transformers')
@@ -30,6 +28,11 @@ insert_methods_from_submodule('_manipulators')
 
 -- `selectors` submodule
 insert_methods_from_submodule('_selectors')
+
+-- `object_and_meta` submodule
+-- this module should go last since some methods here override others
+insert_methods_from_submodule('_object_and_meta')
+
 
 
 

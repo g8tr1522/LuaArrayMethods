@@ -12,11 +12,13 @@ local _root = _mainroot.."src/basic_methods/transformers/"
 
 ---------------------------------------
 -- math
+transformers.abs        = require(_root..'abs')
 transformers.add        = require(_root..'add')
 transformers.mult       = require(_root..'mult')
 transformers.div        = require(_root..'div')
 transformers.round      = require(_root..'round')
 transformers.clamp      = require(_root..'clamp')
+
 
 ---------------------------------------
 -- order

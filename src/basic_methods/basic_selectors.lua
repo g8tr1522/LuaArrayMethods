@@ -11,15 +11,26 @@ local _root = _mainroot.."src/basic_methods/selectors/"
 
 
 
-basic_selectors.sample     = require(_root..'sample')
-basic_selectors.sample_    = require(_root..'sample_')
-basic_selectors.at         = require(_root..'at')
 
-basic_selectors.sum        = require(_root..'sum')
+-- math related
+basic_selectors.sum              = require(_root..'sum')
+basic_selectors.min              = require(_root..'min')
+basic_selectors.max              = require(_root..'max')
 
-basic_selectors.weighted   = require(_root..'weighted')
+-- choosing values
+basic_selectors.weighted         = require(_root..'weighted')
+basic_selectors.sample           = require(_root..'sample')
+basic_selectors.sample_          = require(_root..'sample_')
+basic_selectors.at               = require(_root..'at')
 
-basic_selectors.compare    = require(_root..'compare')
+-- comparisons
+basic_selectors.table_compare    = require(_root..'table_compare')
+basic_selectors.closest_to       = require(_root..'compare')
+	basic_selectors.nearest          = basic_selectors.closest_to
+basic_selectors.find_index       = require(_root..'compare')
+	basic_selectors.find             = basic_selectors.find
+	basic_selectors.index            = basic_selectors.index
+	basic_selectors.compare          = basic_selectors.compare
 
 
 
