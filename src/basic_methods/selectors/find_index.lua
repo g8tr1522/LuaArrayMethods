@@ -35,7 +35,7 @@ return function (t, val_or_func, unpacked)
 			if val_or_func(v) then
 				count = count + 1
 				pos[count] = j
-				vals[i] = v
+				vals[count] = v
 			end
 		end
 	end

@@ -1,7 +1,7 @@
 -- lam.basic.min(t, N, but_greater_than)
 -- finds smallest value in array, returns it and its position
 -- returns two tables of the N smallest values and their positions if a number is passed to N
--- if `but_greater_than` is specified, then find smallest value(s) that is greater than or equal to `but_greater_than`
+-- if `but_greater_than` is specified, then find smallest value(s) that is greater than `but_greater_than`
 --
 --
 -- future: 
@@ -17,10 +17,10 @@ local algo = function (t, but_greater_than)
 	local smallest = math.maxinteger
 	local pos = 0
 	for j=1,#t do
-		if but_greater_than<=t[j] and t[j]<smallest then
+		if but_greater_than<t[j] and t[j]<smallest then
 			smallest = t[j]
 			pos = j
-		end			
+		end	
 	end
 	
 	return smallest, pos

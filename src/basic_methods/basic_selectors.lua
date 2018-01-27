@@ -25,12 +25,12 @@ basic_selectors.at               = require(_root..'at')
 
 -- comparisons
 basic_selectors.table_compare    = require(_root..'table_compare')
-basic_selectors.closest_to       = require(_root..'compare')
+basic_selectors.closest_to       = require(_root..'closest_to')
 	basic_selectors.nearest          = basic_selectors.closest_to
-basic_selectors.find_index       = require(_root..'compare')
-	basic_selectors.find             = basic_selectors.find
-	basic_selectors.index            = basic_selectors.index
-	basic_selectors.compare          = basic_selectors.compare
+basic_selectors.find_index       = require(_root..'find_index')
+	basic_selectors.find             = basic_selectors.find_index
+	basic_selectors.index            = basic_selectors.find_index
+	basic_selectors.compare          = basic_selectors.find_index
 
 
 

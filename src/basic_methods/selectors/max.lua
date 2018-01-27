@@ -8,7 +8,7 @@ local algo = function (t, but_less_than)
 	local largest = math.mininteger
 	local pos = 0
 	for j=1,#t do
-		if largest<t[j] and t[j]<=but_less_than then
+		if largest<t[j] and t[j]<but_less_than then
 			largest = t[j]
 			pos = j
 		end			
