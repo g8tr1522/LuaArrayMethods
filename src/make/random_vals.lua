@@ -2,8 +2,8 @@
 
 
 local rand = math.random
-local mult = require('src/basic_methods/transformers/mult')
-local add  = require('src/basic_methods/transformers/add')
+local mult = require(_mainroot..'src/basic_methods/transformers/mult')
+local add  = require(_mainroot..'src/basic_methods/transformers/add')
 
 
 return function (length, low, high, as_integers)

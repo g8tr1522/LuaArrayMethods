@@ -6,11 +6,11 @@
 --
 
 
-local find_index = require('src/basic_methods/selectors/find_index')
+local find_index = require(_mainroot..'src/basic_methods/selectors/find_index')
 local remove     = table.remove
-local add        = require('src/basic_methods/transformers/add')
-local abs        = require('src/basic_methods/transformers/abs')
-local min        = require('src/basic_methods/selectors/min')
+local add        = require(_mainroot..'src/basic_methods/transformers/add')
+local abs        = require(_mainroot..'src/basic_methods/transformers/abs')
+local min        = require(_mainroot..'src/basic_methods/selectors/min')
 
 
 return function (t, val, N, return_type)
