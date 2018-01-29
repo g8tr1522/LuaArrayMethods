@@ -4,6 +4,11 @@
 --
 -- For example, if `t` has 5 elements, 
 --
+--
+-- future: allow `index` to be a vararg so that multiple splits can be performed
+--
+--
+
 
 return function (t, index)
 	local rt1, rt2 = {}, {}
@@ -17,7 +22,9 @@ return function (t, index)
 		end
 		
 		return rt1,rt2
+	elseif index > #t then
+		return lam.copy_vla(t), {}
+	elseif index <= 0 then
+		return {}, lam.copy_vla(t)
 	end
 end
-	
-	

@@ -26,6 +26,8 @@ transformers.reverse    = require(_root..'reverse')
 transformers.shuffle    = require(_root..'shuffle')
 transformers.sort       = require(_root..'sort')
 transformers.swap       = require(_root..'swap')
+transformers.rotate     = require(_root..'rotate')
+transformers.shift      = require(_root..'shift')
 
 ---------------------------------------
 -- boolean

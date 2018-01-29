@@ -21,6 +21,7 @@ manipulators.remove     = require(_root..'remove')
 manipulators.copy       = require(_root..'copy')
 manipulators.split      = require(_root..'split')
 manipulators.concat     = require(_root..'concat')
+manipulators.glue       = require(_root..'glue')
 
 
 --_root = nil
