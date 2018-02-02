@@ -6,21 +6,31 @@
 
 
 local is_all_numbers = require(_mainroot..'src/basic_methods/selectors/is_all_numbers')
-local sort = table.sort
-local insert = table.insert
+local tsort = table.sort
+local tinsert = table.insert
 
 
-return function (t, val)
+return function (t, val, perform_insert)
+	perform_insert = perform_insert or true
 	local rt = lam.copy_vla(t)
-	if 
-	sort(rt)
 	
+-- get the sorted version of t
+	if not is_all_numbers(t) then
+		error("t must be a VLA entirely of numbers"
+			,2)
+	end
+	tsort(rt)
+	
+-- find insertion point
 	local index = 1
 	while index<=#t and val>t[index] do
 		index = index + 1
 	end
 	
-	insert(rt, index, val)
+-- insert if desired
+	if perform_insert then
+		tinsert(rt, index, val)
+	end
 	
 	return rt, index
 end
