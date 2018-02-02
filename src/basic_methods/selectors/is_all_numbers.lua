@@ -19,7 +19,7 @@
 --
 
 
-local slice = require('src/basic_methods/transformers/slice')
+local slice = require(_mainroot..'src/basic_methods/transformers/slice')
 local ssub = string.sub
 
 

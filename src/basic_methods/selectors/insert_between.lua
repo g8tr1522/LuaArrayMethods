@@ -5,7 +5,7 @@
 --
 
 
-local is_all_numbers = require('src/basic_methods/selectors/is_all_numbers')
+local is_all_numbers = require(_mainroot..'src/basic_methods/selectors/is_all_numbers')
 local sort = table.sort
 local insert = table.insert
 

@@ -6,8 +6,8 @@
 --
 
 
-local split = require('src/basic_methods/manipulators/split')
-local concat = require('src/basic_methods/manipulators/concat')
+local split  = require(_mainroot..'src/basic_methods/manipulators/split')
+local concat = require(_mainroot..'src/basic_methods/manipulators/concat')
 --local abs = math.abs
 
 local get_split_index = function (table_len, rotate_by)
