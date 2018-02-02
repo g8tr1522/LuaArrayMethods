@@ -31,6 +31,9 @@ basic_selectors.find_index       = require(_root..'find_index')
 	basic_selectors.find             = basic_selectors.find_index
 	basic_selectors.index            = basic_selectors.find_index
 	basic_selectors.compare          = basic_selectors.find_index
+basic_selectors.insert_between   = require(_root..'insert_between')
+basic_selectors.is_all_numbers   = require(_root..'is_all_numbers')
+basic_selectors.is_sorted        = require(_root..'is_sorted')
 
 
 
